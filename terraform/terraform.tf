@@ -1,4 +1,11 @@
 terraform {
+  cloud {
+    organization = "hashicorp-learn"
+    workspaces {
+      name = "learn-packer-multicloud"
+    }
+  }
+  
   required_providers {
     aws = {
       source  = "hashicorp/aws"

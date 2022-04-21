@@ -39,10 +39,10 @@ source "azure-arm" "ubuntu-hirsute" {
     dept = "Engineering"
     task = "Image deployment"
   }
-  client_id       = var.arm_client_id
-  client_secret   = var.arm_client_secret
-  subscription_id = var.arm_subscription_id
 
+  client_id                         = var.arm_client_id
+  client_secret                     = var.arm_client_secret
+  subscription_id                   = var.arm_subscription_id
   managed_image_resource_group_name = var.resource_group
 
   os_type         = "Linux"
