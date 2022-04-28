@@ -1,6 +1,6 @@
 terraform {
   cloud {
-    organization = "hashicorp-learn"
+    organization = "organization-name"
     workspaces {
       name = "learn-packer-multicloud"
     }
