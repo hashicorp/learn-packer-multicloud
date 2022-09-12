@@ -44,6 +44,7 @@ source "azure-arm" "ubuntu-lts" {
   client_secret                     = var.arm_client_secret
   subscription_id                   = var.arm_subscription_id
   managed_image_resource_group_name = var.resource_group
+  ssh_username = "ubuntu"
 
   os_type         = "Linux"
   image_offer     = "0001-com-ubuntu-server-jammy"
