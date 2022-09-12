@@ -13,6 +13,6 @@ variable "arm_subscription_id" {
   default = env("ARM_SUBSCRIPTION_ID")
 }
 
-#variable "resource_group" {
-#  type = string
-#}
+variable "resource_group" {
+  type = string
+}
