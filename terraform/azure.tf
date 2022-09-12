@@ -8,7 +8,7 @@ variable "prefix" {
 
 resource "azurerm_resource_group" "main" {
   name     = "${var.prefix}-resources"
-  location = "West US"
+  location = "West US 3"
 }
 
 resource "azurerm_virtual_network" "main" {
@@ -74,10 +74,9 @@ resource "azurerm_linux_virtual_machine" "hashicups" {
   resource_group_name = azurerm_resource_group.main.name
   location            = azurerm_resource_group.main.location
   size                = "Standard_B1s"
-  admin_username      = "adminuser"
-  admin_password      = "adminPass1!"
+  admin_username      = "ubuntu"
 
-  disable_password_authentication = false
+  disable_password_authentication = true
   network_interface_ids = [azurerm_network_interface.main.id]
 
   os_disk {

@@ -14,5 +14,5 @@ data "hcp_packer_image" "azure_hashicups" {
   bucket_name    = data.hcp_packer_iteration.hashicups.bucket_name
   iteration_id   = data.hcp_packer_iteration.hashicups.ulid
   cloud_provider = "azure"
-  region         = "westus"
+  region         = "westus3"
 }

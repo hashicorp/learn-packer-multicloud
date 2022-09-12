@@ -1,24 +1,26 @@
 terraform {
+  /*
   cloud {
     organization = "organization-name"
     workspaces {
       name = "learn-packer-multicloud"
     }
   }
+  */
   
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = "~> 4.10.0"
+      version = "~> 4.30.0"
     }
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "~> 3.2.0"
+      version = "~> 3.22.0"
     }
     hcp = {
       source  = "hashicorp/hcp"
-      version = "~> 0.26.0"
+      version = "~> 0.44.0"
     }
   }
-  required_version = ">= 1.1.0"
+  required_version = "~> 1.2.0"
 }
