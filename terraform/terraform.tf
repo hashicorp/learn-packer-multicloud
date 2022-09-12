@@ -1,12 +1,10 @@
 terraform {
-  /*
   cloud {
     organization = "organization-name"
     workspaces {
       name = "learn-packer-multicloud"
     }
   }
-  */
   
   required_providers {
     aws = {
