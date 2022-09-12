@@ -48,7 +48,7 @@ source "azure-arm" "ubuntu-lts" {
   os_type         = "Linux"
   image_offer     = "0001-com-ubuntu-server-jammy"
   image_publisher = "Canonical"
-  image_sku       = "22_04"
+  image_sku       = "22_04-lts"
 
   vm_size = "Standard_B1s"
 }
