@@ -72,7 +72,7 @@ This is an image for HashiCups.
 
   source "source.azure-arm.ubuntu-lts" {
     name               = "hashicups"
-    location           = "westus"
+    location           = "westus3"
     managed_image_name = "hashicups_${local.date}"
   }
 
