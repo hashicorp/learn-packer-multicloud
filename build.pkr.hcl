@@ -15,42 +15,44 @@ locals {
   date = formatdate("HHmm", timestamp())
 }
 
-source "amazon-ebs" "ubuntu-hirsute" {
+source "amazon-ebs" "ubuntu-lts" {
   region = "us-west-1"
   source_ami_filter {
     filters = {
       virtualization-type = "hvm"
-      name                = "ubuntu/images/*ubuntu-hirsute-21.04-amd64-server-*"
+      name                = "ubuntu/images/hvm-ssd/ubuntu-jammy-22.04-amd64-server-*"
       root-device-type    = "ebs"
     }
     owners      = ["099720109477"]
     most_recent = true
   }
+
+  ami_name       = "hashicups_{{timestamp}}"
+  ami_regions    = ["us-west-1"]
   instance_type  = "t2.small"
   ssh_username   = "ubuntu"
   ssh_agent_auth = false
-
-  ami_name    = "hashicups_{{timestamp}}"
-  ami_regions = ["us-west-1"]
 }
 
-source "azure-arm" "ubuntu-hirsute" {
-  azure_tags = {
-    dept = "Engineering"
-    task = "Image deployment"
-  }
-
+source "azure-arm" "ubuntu-lts" {
   client_id                         = var.arm_client_id
   client_secret                     = var.arm_client_secret
   subscription_id                   = var.arm_subscription_id
   managed_image_resource_group_name = var.resource_group
 
   os_type         = "Linux"
-  image_offer     = "0001-com-ubuntu-server-hirsute"
+  image_offer     = "0001-com-ubuntu-server-jammy"
   image_publisher = "Canonical"
-  image_sku       = "21_04"
+  image_sku       = "22_04-lts"
 
-  vm_size = "Standard_B1s"
+  vm_size        = "Standard_B1s"
+  ssh_username   = "ubuntu"
+  ssh_agent_auth = false
+
+  azure_tags = {
+    dept = "Engineering"
+    task = "Image deployment"
+  }
 }
 
 build {
@@ -67,27 +69,25 @@ This is an image for HashiCups.
   }
 
   sources = [
-    "source.amazon-ebs.ubuntu-hirsute",
+    "source.amazon-ebs.ubuntu-lts",
   ]
 
-  source "source.azure-arm.ubuntu-hirsute" {
+  source "source.azure-arm.ubuntu-lts" {
     name               = "hashicups"
-    location           = "westus"
+    location           = "westus3"
     managed_image_name = "hashicups_${local.date}"
   }
 
-  ## HashiCups
-  # Add startup script that will run hashicups on instance boot
+  # systemd unit for HashiCups service
   provisioner "file" {
-    source      = "setup-deps-hashicups.sh"
-    destination = "/tmp/setup-deps-hashicups.sh"
+    source      = "hashicups.service"
+    destination = "/tmp/hashicups.service"
   }
 
-  # Move temp files to actual destination
-  # Must use this method because their destinations are protected 
+  # Set up HashiCups
   provisioner "shell" {
-    inline = [
-      "sudo cp /tmp/setup-deps-hashicups.sh /var/lib/cloud/scripts/per-boot/setup-deps-hashicups.sh",
+    scripts = [
+      "setup-deps-hashicups.sh"
     ]
   }
 }

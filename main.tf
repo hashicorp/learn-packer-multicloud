@@ -8,7 +8,7 @@ provider "azurerm" {
 
 resource "azurerm_resource_group" "packer" {
   name     = "learn-packer-multicloud-rg"
-  location = "West US"
+  location = "West US 3"
 }
 
 output "packer-rg" {
