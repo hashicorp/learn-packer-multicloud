@@ -26,32 +26,33 @@ source "amazon-ebs" "ubuntu-lts" {
     owners      = ["099720109477"]
     most_recent = true
   }
+
+  ami_name       = "hashicups_{{timestamp}}"
+  ami_regions    = ["us-west-1"]
   instance_type  = "t2.small"
   ssh_username   = "ubuntu"
   ssh_agent_auth = false
-
-  ami_name    = "hashicups_{{timestamp}}"
-  ami_regions = ["us-west-1"]
 }
 
 source "azure-arm" "ubuntu-lts" {
-  azure_tags = {
-    dept = "Engineering"
-    task = "Image deployment"
-  }
-
   client_id                         = var.arm_client_id
   client_secret                     = var.arm_client_secret
   subscription_id                   = var.arm_subscription_id
   managed_image_resource_group_name = var.resource_group
-  ssh_username = "ubuntu"
 
   os_type         = "Linux"
   image_offer     = "0001-com-ubuntu-server-jammy"
   image_publisher = "Canonical"
   image_sku       = "22_04-lts"
 
-  vm_size = "Standard_B1s"
+  vm_size        = "Standard_B1s"
+  ssh_username   = "ubuntu"
+  ssh_agent_auth = false
+
+  azure_tags = {
+    dept = "Engineering"
+    task = "Image deployment"
+  }
 }
 
 build {
