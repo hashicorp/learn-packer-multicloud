@@ -77,7 +77,7 @@ resource "azurerm_linux_virtual_machine" "hashicups" {
   admin_username      = "ubuntu"
   admin_password      = "adminPass1!"
 
-  disable_password_authentication = true
+  disable_password_authentication = false
   network_interface_ids = [azurerm_network_interface.main.id]
 
   os_disk {
