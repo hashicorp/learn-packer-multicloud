@@ -1,12 +1,12 @@
 #!/bin/bash
 
-org_name="hashicorp-learn"
+org_name="$TF_CLOUD_ORGANIZATION"
 
 hcp_payload='{
   "data": {
     "type": "varsets",
     "attributes": {
-      "name": "HCP Credentials",
+      "name": "Multicloud HCP Credentials",
       "description": "Variable sets with HCP service principal credentials",
       "global": true
     },
@@ -41,7 +41,7 @@ aws_payload='{
   "data": {
     "type": "varsets",
     "attributes": {
-      "name": "AWS Credentials",
+      "name": "Multicloud AWS Credentials",
       "description": "Variable sets with AWS credentials",
       "global": true
     },
@@ -76,7 +76,7 @@ azure_payload='{
   "data": {
     "type": "varsets",
     "attributes": {
-      "name": "Azure Credentials",
+      "name": "Multicloud Azure Credentials",
       "description": "Variable sets with Azure credentials",
       "global": true
     },
