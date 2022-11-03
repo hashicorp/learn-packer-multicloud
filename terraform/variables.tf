@@ -26,3 +26,7 @@ variable "hcp_channel" {
   description = "HCP Packer channel name"
   default     = "production"
 }
+
+variable "AZURE_RESOURCE_GROUP" {
+  description = "Azure Resource Group name where Terraform will create infrastructure"
+}

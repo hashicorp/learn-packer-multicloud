@@ -2,11 +2,11 @@ packer {
   required_plugins {
     amazon = {
       source  = "github.com/hashicorp/amazon"
-      version = ">= 1.0.9"
+      version = ">= 1.1.5"
     }
     azure = {
       source  = "github.com/hashicorp/azure"
-      version = ">= 1.0.6"
+      version = ">= 1.3.1"
     }
   }
 }
@@ -38,7 +38,7 @@ source "azure-arm" "ubuntu-lts" {
   client_id                         = var.arm_client_id
   client_secret                     = var.arm_client_secret
   subscription_id                   = var.arm_subscription_id
-  managed_image_resource_group_name = var.resource_group
+  managed_image_resource_group_name = var.azure_resource_group
 
   os_type         = "Linux"
   image_offer     = "0001-com-ubuntu-server-jammy"
@@ -68,10 +68,10 @@ This is an image for HashiCups.
     }
   }
 
-  sources = [
-    "source.amazon-ebs.ubuntu-lts",
-  ]
-
+  source "source.amazon-ebs.ubuntu-lts" {
+    name = "hashicups"
+  }
+  
   source "source.azure-arm.ubuntu-lts" {
     name               = "hashicups"
     location           = "westus3"

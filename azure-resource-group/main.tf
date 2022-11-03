@@ -6,8 +6,12 @@ provider "azurerm" {
   }
 }
 
+variable "AZURE_RESOURCE_GROUP" {
+  type = string
+}
+
 resource "azurerm_resource_group" "packer" {
-  name     = "learn-packer-multicloud-rg"
+  name     = var.AZURE_RESOURCE_GROUP #"learn-packer-multicloud-rg"
   location = "West US 3"
 }
 

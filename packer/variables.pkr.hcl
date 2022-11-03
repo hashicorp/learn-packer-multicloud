@@ -13,6 +13,7 @@ variable "arm_subscription_id" {
   default = env("ARM_SUBSCRIPTION_ID")
 }
 
-variable "resource_group" {
+variable "azure_resource_group" {
   type = string
+  default = env("TF_VAR_AZURE_RESOURCE_GROUP")
 }

@@ -1,12 +1,10 @@
 terraform {
   cloud {
-    //organization = "organization-name"
     workspaces {
       name = "learn-packer-multicloud"
     }
   }
 
-  
   required_providers {
     aws = {
       source  = "hashicorp/aws"
@@ -21,5 +19,5 @@ terraform {
       version = "~> 0.44.0"
     }
   }
-  required_version = "~> 1.2.0"
+  required_version = ">= 1.2.0"
 }
