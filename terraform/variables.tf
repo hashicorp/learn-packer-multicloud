@@ -1,6 +1,11 @@
-variable "region" {
-  description = "The region Terraform deploys your instance"
+variable "aws_region" {
+  description = "The AWS region Terraform should deploy your instance to"
   default     = "us-west-1"
+}
+
+variable "azure_region" {
+  description = "The Azure region Terraform should deploy your instance to"
+  default = "westus3"
 }
 
 variable "cidr_vpc" {

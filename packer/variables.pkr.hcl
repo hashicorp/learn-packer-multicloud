@@ -17,3 +17,13 @@ variable "azure_resource_group" {
   type = string
   default = env("TF_VAR_AZURE_RESOURCE_GROUP")
 }
+
+variable "azure_region" {
+  type = string
+  default = "westus3"
+}
+
+variable "aws_region" {
+  type = string
+  default = "us-west-1"
+}

@@ -1,6 +1,8 @@
 #!/bin/bash
 set -eu -o pipefail
 
+# work around "Splitting up __ into data and signature failed" errors
+sudo rm -rf /var/lib/apt/lists/*
 # Install necessary dependencies
 sudo apt-get update
 sudo apt-get -y -qq install ca-certificates curl gnupg lsb-release
