@@ -7,7 +7,7 @@ variable "prefix" {
 }
 
 data "azurerm_resource_group" "main" {
-  name     = var.AZURE_RESOURCE_GROUP
+  name     = var.azure_resource_group
 }
 
 resource "azurerm_virtual_network" "main" {

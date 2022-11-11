@@ -32,6 +32,6 @@ variable "hcp_channel" {
   default     = "production"
 }
 
-variable "AZURE_RESOURCE_GROUP" {
+variable "azure_resource_group" {
   description = "Azure Resource Group name where Terraform will create infrastructure"
 }
