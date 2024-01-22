@@ -51,7 +51,7 @@ resource "aws_security_group" "hashicups" {
 }
 
 resource "aws_instance" "hashicups" {
-  ami                         = data.hcp_packer_image.aws_hashicups.cloud_image_id
+  ami                         = data.hcp_packer_artifact.aws_hashicups.external_identifier
   instance_type               = "t2.micro"
   subnet_id                   = aws_subnet.subnet_public.id
   vpc_security_group_ids      = [aws_security_group.hashicups.id]
