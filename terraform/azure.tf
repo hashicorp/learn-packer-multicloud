@@ -7,7 +7,7 @@ variable "prefix" {
 }
 
 data "azurerm_resource_group" "main" {
-  name     = var.azure_resource_group
+  name = var.azure_resource_group
 }
 
 resource "azurerm_virtual_network" "main" {
@@ -69,7 +69,7 @@ resource "azurerm_network_interface_security_group_association" "association" {
 
 resource "azurerm_linux_virtual_machine" "hashicups" {
   name                = "${var.prefix}-vm"
-  source_image_id     = data.hcp_packer_image.azure_hashicups.cloud_image_id
+  source_image_id     = data.hcp_packer_artifact.azure_hashicups.external_identifier
   resource_group_name = data.azurerm_resource_group.main.name
   location            = data.azurerm_resource_group.main.location
   size                = "Standard_B1s"
@@ -77,7 +77,7 @@ resource "azurerm_linux_virtual_machine" "hashicups" {
   admin_password      = "adminPass1!"
 
   disable_password_authentication = false
-  network_interface_ids = [azurerm_network_interface.main.id]
+  network_interface_ids           = [azurerm_network_interface.main.id]
 
   os_disk {
     caching              = "ReadWrite"

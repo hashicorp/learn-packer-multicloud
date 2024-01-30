@@ -5,7 +5,7 @@ variable "aws_region" {
 
 variable "azure_region" {
   description = "The Azure region Terraform should deploy your instance to"
-  default = "westus3"
+  default     = "westus3"
 }
 
 variable "cidr_vpc" {
