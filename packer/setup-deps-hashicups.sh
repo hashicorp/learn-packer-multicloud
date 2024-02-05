@@ -1,4 +1,7 @@
 #!/bin/bash
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: MPL-2.0
+
 set -eu -o pipefail
 
 # work around "Splitting up __ into data and signature failed" errors
