@@ -1,3 +1,6 @@
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: MPL-2.0
+
 variable "aws_region" {
   description = "The AWS region Terraform should deploy your instance to"
   default     = "us-west-1"

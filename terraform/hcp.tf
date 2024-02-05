@@ -1,3 +1,6 @@
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: MPL-2.0
+
 data "hcp_packer_version" "hashicups" {
   bucket_name  = var.hcp_bucket_hashicups
   channel_name = var.hcp_channel
